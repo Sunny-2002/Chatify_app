@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" type="image/png" href="images/icons8-chat-96.png" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chatify</title>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/login.css">
+	<link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<body>
+	<% if(typeof message !== 'undefined') {
+		%>
+			<div class="custom-message" style="color: #ff4646;">
+				<i class="fa fa-exclamation-circle" aria-hidden="true"></i> <%= message %>
+			</div>
+		<%
+	} %>
+	<div class='app__flex login__container'>
+		<div class='app__flex login__card'>
+			<div><h2>Login Account</h2></div>
+			<form action="" method="POST" id="login">
+				<div class='app__flex login__info'>
+					<div class='input__container'>
+						<input type="email" placeholder='Email' name="email" required/>
+						<i class="fa fa-envelope login__icon"></i>
+					</div>
+					<div class='input__container'>
+						<input type="password" placeholder='Password' name="password" required/>
+						<i class="fa fa-lock login__icon"></i>
+					</div>
+				</div>
+			</form>
+			<div class='app__flex checking'>
+				<div>
+					<input type="checkbox" name="check" value="" />
+					<label class='text text__link' id="showPassword">Show Password</label>
+				</div>
+				<a href="/forgot-password" class='text__link'><span>Forget Password?</span></a>
+			</div>
+			<button class='btn__default' type="submit" form="login">
+				Login Account
+			</button>
+			<a href="/google" class='app__flex btn__default btn__alternative'><i class="fab fa-google" aria-hidden="true"></i>Sign in with Google</a>
+			<div class='reg__info'>
+				<a href="/register" class='text__link'>Don't have an account?<span>Sign Up</span></a>
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	$(document).ready(function() {
+		$('input[name="check"]').change(function() {
+			if ($(this).is(':checked')) {
+				$('input[name="password"]').attr('type', 'text');
+			} else {
+				$('input[name="password"]').attr('type', 'password');
+			}
+		});
+	});
+</script>
+</html>
+
